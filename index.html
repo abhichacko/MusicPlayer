@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/index.style.css" />
+    <link rel="stylesheet" href="./styles/musicplayer.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <title>Musicplayer</title>
+  </head>
+  <body>
+    <div class="hero">
+      <nav>
+        <div class="logo-container">
+          <h1 class="logo">Menu</h1>
+          <span class="burger"><span class="material-icons">menu</span></span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="main">
+        <div class="banner">
+          <h1>Music is life itself.</h1>
+          <span class="material-icons play-icon">play_circle</span>
+        </div>
+        <div class="music-player-area">
+          <div class="play-area">
+            <div class="image-container">
+              <div class="song-image" value="0"></div>
+              <audio src="./songs/Alone_320(PaglaSongs).mp3" id="audio"></audio>
+              <input
+                type="range"
+                min="1"
+                max="100"
+                value="50"
+                class="volume-slider"
+                id="myRange"
+                orient="vertical"
+              />
+            </div>
+
+            <div class="play-buttons">
+              <span class="material-icons">shuffle</span>
+              <span class="material-icons">skip_previous</span>
+              <span class="material-icons" id="play">play_circle</span>
+
+              <span class="material-icons">skip_next</span>
+              <span class="material-icons">repeat</span>
+
+              <span class="material-icons volume-button">volume_up</span>
+            </div>
+          </div>
+
+          <div class="playlist-area">playlist</div>
+        </div>
+      </div>
+      <div class="footer">footer</div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,350 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  min-height: 100vh;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0.6))), url(../images/ark-music-wallpapers.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(../images/ark-music-wallpapers.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+nav {
+  background-color: #020a06;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: space-between;
+      -ms-flex-align: space-between;
+          align-items: space-between;
+  font-family: "Poppins", sans-serif;
+  min-height: 10vh;
+}
+
+.logo-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 35%;
+}
+
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+}
+
+.burger {
+  display: none;
+}
+
+.nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 65%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  z-index: 1;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  color: white;
+}
+
+.nav-links a:hover {
+  font-size: 1.2rem;
+}
+
+.nav-links a::after {
+  content: "";
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 0%;
+  height: 2px;
+  background: lime;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links li {
+  list-style-type: none;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  min-height: 80vh;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.banner {
+  color: lime;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 60%;
+}
+
+.banner h1 {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.banner .play-icon {
+  color: lime;
+  font-size: 5rem;
+  position: relative;
+  -webkit-animation-name: shake;
+          animation-name: shake;
+  -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in;
+          animation-timing-function: ease-in;
+  cursor: pointer;
+}
+
+.banner .play-icon:hover {
+  -webkit-animation-name: shakeAnim;
+          animation-name: shakeAnim;
+  color: #53e053;
+  border: green;
+}
+
+.footer {
+  color: white;
+  min-height: 10vh;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-color: white;
+  }
+  .banner {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  nav {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .nav-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+  }
+  .nav-links li {
+    border-top: 0.3px solid #112217;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .logo-container {
+    width: 100%;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .logo {
+    display: none;
+  }
+  .burger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: white;
+  }
+  .main {
+    min-height: 80vh;
+  }
+  .banner {
+    width: 100%;
+  }
+  .banner h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@-webkit-keyframes shakeAnim {
+  0% {
+    bottom: 0;
+  }
+  1% {
+    bottom: -3px;
+  }
+  2% {
+    bottom: 5px;
+  }
+  3% {
+    bottom: -8px;
+  }
+  4% {
+    bottom: 8px;
+  }
+  5% {
+    bottom: -5px;
+  }
+  6% {
+    bottom: 3px;
+  }
+  7% {
+    bottom: 0;
+  }
+}
+
+@keyframes shakeAnim {
+  0% {
+    bottom: 0;
+  }
+  1% {
+    bottom: -3px;
+  }
+  2% {
+    bottom: 5px;
+  }
+  3% {
+    bottom: -8px;
+  }
+  4% {
+    bottom: 8px;
+  }
+  5% {
+    bottom: -5px;
+  }
+  6% {
+    bottom: 3px;
+  }
+  7% {
+    bottom: 0;
+  }
+}
+
+@-webkit-keyframes shake {
+  0% {
+    bottom: 0;
+  }
+  1% {
+    bottom: -3px;
+  }
+  2% {
+    bottom: 5px;
+  }
+  3% {
+    bottom: -8px;
+  }
+  4% {
+    bottom: 8px;
+  }
+  5% {
+    bottom: -5px;
+  }
+  6% {
+    bottom: 3px;
+  }
+  7% {
+    bottom: 0;
+  }
+}
+
+@keyframes shake {
+  0% {
+    bottom: 0;
+  }
+  1% {
+    bottom: -3px;
+  }
+  2% {
+    bottom: 5px;
+  }
+  3% {
+    bottom: -8px;
+  }
+  4% {
+    bottom: 8px;
+  }
+  5% {
+    bottom: -5px;
+  }
+  6% {
+    bottom: 3px;
+  }
+  7% {
+    bottom: 0;
+  }
+}
+/*# sourceMappingURL=index.style.css.map */

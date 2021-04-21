@@ -1,0 +1,93 @@
+$color-banner: lime;
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+.music-player-area {
+  width: 100%;
+  //   border: 1px solid white;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-area {
+  //   border: 1px solid yellow;
+  width: 50%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  color: $color-banner;
+}
+.image-container {
+  width: 100%;
+  display: flex;
+}
+.song-image {
+  //   border: 1px solid green;
+  min-height: 65vh;
+  width: 100%;
+  //   align-self: center;
+  background-image: url(../images/music1.jpg);
+  background-size: cover;
+}
+.volume-slider {
+  align-self: flex-end;
+  width: 15%;
+  //   display: none;
+
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  -webkit-appearance: slider-vertical;
+  writing-mode: bt-lr;
+  color: $color-banner;
+}
+.show {
+  display: block;
+}
+
+.play-buttons {
+  //   border: 1px solid blue;
+  min-height: 15vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.play-buttons span {
+  font-size: 2rem;
+  cursor: pointer;
+  &:hover {
+    font-size: 3rem;
+  }
+}
+.play-buttons span:nth-child(3) {
+  font-size: 4rem;
+  &:hover {
+    font-size: 5rem;
+  }
+}
+.voulme-bar {
+  z-index: 1;
+}
+.playlist-area {
+  //   border: 1px solid red;
+  color: green;
+  width: 50%;
+  min-height: 80vh;
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+  .playlist-area {
+    display: none;
+  }
+  .play-area {
+    width: 100%;
+  }
+  .play-buttons {
+    font-size: 1rem;
+  }
+}
+@media screen and (max-width: $breakpoint-mobile) {
+}

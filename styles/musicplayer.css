@@ -1,0 +1,111 @@
+.music-player-area {
+  width: 100%;
+  min-height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.play-area {
+  width: 50%;
+  min-height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: lime;
+}
+
+.image-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.song-image {
+  min-height: 65vh;
+  width: 100%;
+  background-image: url(../images/music1.jpg);
+  background-size: cover;
+}
+
+.volume-slider {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  width: 15%;
+  overflow: auto;
+  -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  -webkit-appearance: slider-vertical;
+  -webkit-writing-mode: bt-lr;
+      -ms-writing-mode: bt-lr;
+          writing-mode: bt-lr;
+  color: lime;
+}
+
+.show {
+  display: block;
+}
+
+.play-buttons {
+  min-height: 15vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.play-buttons span {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.play-buttons span:hover {
+  font-size: 3rem;
+}
+
+.play-buttons span:nth-child(3) {
+  font-size: 4rem;
+}
+
+.play-buttons span:nth-child(3):hover {
+  font-size: 5rem;
+}
+
+.voulme-bar {
+  z-index: 1;
+}
+
+.playlist-area {
+  color: green;
+  width: 50%;
+  min-height: 80vh;
+}
+
+@media screen and (max-width: 768px) {
+  .playlist-area {
+    display: none;
+  }
+  .play-area {
+    width: 100%;
+  }
+  .play-buttons {
+    font-size: 1rem;
+  }
+}
+/*# sourceMappingURL=musicplayer.css.map */

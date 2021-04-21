@@ -1,0 +1,220 @@
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$color-white: white;
+$color-grey: lightslategrey;
+$color-banner: lime;
+$color-navbar: rgb(2, 10, 6);
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)),
+    url(../images/ark-music-wallpapers.jpg);
+  background-size: cover;
+  background-position: center;
+}
+nav {
+  background-color: $color-navbar;
+  display: flex;
+  align-items: space-between;
+  font-family: "Poppins", sans-serif;
+  min-height: 10vh;
+}
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35%;
+}
+.logo {
+  display: flex;
+  color: $color-white;
+}
+.burger {
+  display: none;
+}
+.nav-links {
+  display: flex;
+  width: 65%;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  z-index: 1;
+}
+.nav-links a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  color: $color-white;
+  &:hover {
+    font-size: 1.2rem;
+  }
+  &::after {
+    content: "";
+    display: flex;
+    width: 0%;
+    height: 2px;
+    background: $color-banner;
+    transition: width 0.3s;
+  }
+  &:hover::after {
+    width: 100%;
+  }
+}
+.nav-links li {
+  list-style-type: none;
+}
+
+.main {
+  display: flex;
+  width: 100%;
+  min-height: 80vh;
+  justify-content: flex-start;
+  align-items: center;
+}
+.banner {
+  color: $color-banner;
+  // display: flex;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 60%;
+}
+.banner h1 {
+  font-weight: bold;
+  font-size: 3rem;
+}
+.banner .play-icon {
+  color: $color-banner;
+  font-size: 5rem;
+  position: relative;
+  animation-name: shake;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  cursor: pointer;
+  &:hover {
+    animation-name: shakeAnim;
+    color: rgb(83, 224, 83);
+    border: green;
+  }
+}
+
+.footer {
+  color: $color-white;
+  min-height: 10vh;
+}
+
+@media screen and (max-width: $breakpoint-tablet) {
+  body {
+    background-color: white;
+  }
+  .banner {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+  nav {
+    flex-direction: column;
+  }
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    li {
+      border-top: 0.3px solid rgb(17, 34, 23);
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+  .logo-container {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .logo {
+    display: none;
+  }
+  .burger {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-white;
+  }
+  .main {
+    min-height: 80vh;
+  }
+  .banner {
+    width: 100%;
+  }
+  .banner h1 {
+    font-size: 2.5rem;
+  }
+}
+
+@keyframes shakeAnim {
+  0% {
+    bottom: 0;
+  }
+  1% {
+    bottom: -3px;
+  }
+  2% {
+    bottom: 5px;
+  }
+  3% {
+    bottom: -8px;
+  }
+  4% {
+    bottom: 8px;
+  }
+  5% {
+    bottom: -5px;
+  }
+  6% {
+    bottom: 3px;
+  }
+  7% {
+    bottom: 0;
+  }
+}
+
+@keyframes shake {
+  0% {
+    bottom: 0;
+  }
+  1% {
+    bottom: -3px;
+  }
+  2% {
+    bottom: 5px;
+  }
+  3% {
+    bottom: -8px;
+  }
+  4% {
+    bottom: 8px;
+  }
+  5% {
+    bottom: -5px;
+  }
+  6% {
+    bottom: 3px;
+  }
+  7% {
+    bottom: 0;
+  }
+}
