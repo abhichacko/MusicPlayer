@@ -72,10 +72,38 @@ $breakpoint-desktop: 1024px;
   z-index: 1;
 }
 .playlist-area {
-  //   border: 1px solid red;
+  border-left: 1px solid rgb(241, 239, 239);
   color: green;
   width: 50%;
   min-height: 80vh;
+}
+#playlist-ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  align-items: flex-start;
+  width: 95%;
+  margin-left: 2vh;
+  li {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    // border: 1px solid blanchedalmond;
+    border-radius: 3%;
+    width: 100%;
+    min-height: 8vh;
+    padding-left: 3vh;
+    margin-bottom: 1vh;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 1px 3px rgb(255, 255, 255), 0 1px 2px rgb(250, 248, 248);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    &:hover {
+      box-shadow: 0 14px 28px rgba(243, 236, 236, 0.822),
+        0 10px 10px rgba(238, 231, 231, 0.767);
+      font-size: 1.1rem;
+    }
+  }
 }
 
 @media screen and (max-width: $breakpoint-tablet) {
