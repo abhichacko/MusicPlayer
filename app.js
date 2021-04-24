@@ -136,6 +136,8 @@ const app = () => {
         playListUl.appendChild(li);
       }
       playListLi = document.querySelectorAll("#playlist-ul li");
+      // added click event for each li
+      // call play by index function in each click
       playListLi.forEach((li) => {
         li.addEventListener("click", () => {
           console.log(li.getAttribute("value"));
