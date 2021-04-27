@@ -23,9 +23,10 @@ $color-navbar: rgb(2, 10, 6);
 nav {
   background-color: $color-navbar;
   display: flex;
+  flex-direction: row;
   align-items: space-between;
   font-family: "Poppins", sans-serif;
-  min-height: 10vh;
+  min-height: 8vh;
 }
 .logo-container {
   display: flex;
@@ -111,7 +112,19 @@ nav {
 
 .footer {
   color: $color-white;
-  min-height: 10vh;
+  min-height: 8vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  span {
+    margin-right: 4vh;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
 }
 
 @media screen and (max-width: $breakpoint-tablet) {
@@ -126,9 +139,10 @@ nav {
 @media screen and (max-width: $breakpoint-mobile) {
   nav {
     flex-direction: column;
+    min-height: 3vh;
   }
   .nav-links {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     align-content: center;

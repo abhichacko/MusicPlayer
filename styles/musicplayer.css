@@ -39,23 +39,127 @@
   background-size: cover;
 }
 
+.mobile-playlist-area {
+  border-left: 1px solid #f1efef;
+  color: green;
+  width: 97%;
+  display: none;
+  overflow-y: scroll;
+  height: 65vh;
+}
+
+.mobile-playlist-area::-webkit-scrollbar {
+  width: 2vh;
+  display: none;
+}
+
+#mobile-playlist-ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style-type: none;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 96%;
+  margin-left: 3vh;
+}
+
+#mobile-playlist-ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: black;
+  border-radius: 3%;
+  width: 100%;
+  min-height: 8vh;
+  padding-left: 3vh;
+  margin-bottom: 1vh;
+  font-size: 0.9rem;
+  font-weight: bold;
+  -webkit-box-shadow: 0 1px 3px white, 0 1px 2px #faf8f8;
+          box-shadow: 0 1px 3px white, 0 1px 2px #faf8f8;
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#mobile-playlist-ul li:hover {
+  -webkit-box-shadow: 0 14px 28px rgba(243, 236, 236, 0.822), 0 10px 10px rgba(238, 231, 231, 0.767);
+          box-shadow: 0 14px 28px rgba(243, 236, 236, 0.822), 0 10px 10px rgba(238, 231, 231, 0.767);
+  font-size: 1rem;
+}
+
+#mobile-playlist-ul .active-music {
+  border-left: 3px solid lime;
+  border-top: 3px solid lime;
+}
+
 .volume-slider {
   -ms-flex-item-align: end;
       align-self: flex-end;
-  width: 15%;
-  overflow: auto;
+  display: none;
   -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
   -webkit-appearance: slider-vertical;
-  -webkit-writing-mode: bt-lr;
-      -ms-writing-mode: bt-lr;
-          writing-mode: bt-lr;
-  color: lime;
+  background-color: grey;
+  min-height: 40vh;
+  border-radius: 5%;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: -webkit-transform ease-out 0.5s;
+  transition: -webkit-transform ease-out 0.5s;
+  transition: transform ease-out 0.5s;
+  transition: transform ease-out 0.5s, -webkit-transform ease-out 0.5s;
+}
+
+.volume-slider::-moz-range-progress {
+  background-color: lime;
+}
+
+.volume-slider::-webkit-slider-progress {
+  background-color: lime;
+}
+
+.volume-slider::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  -webkit-box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+          box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: grey;
+  border: 0.2px solid #010101;
+  border-radius: 10px;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  -webkit-box-shadow: 1px 1px 1px #000000, 0px 0px 1px #fffefe;
+          box-shadow: 1px 1px 1px #000000, 0px 0px 1px #fffefe;
+  height: 2vh;
+  width: 2vh;
+  border-radius: 1vh;
+  background: lime;
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 2vh;
+  height: 2vh;
+  background: lime;
+  cursor: pointer;
 }
 
 .show {
-  display: block;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .play-buttons {
@@ -87,7 +191,7 @@
   font-size: 5rem;
 }
 
-.voulme-bar {
+.volume-bar {
   z-index: 1;
 }
 
@@ -95,7 +199,36 @@
   border-left: 1px solid #f1efef;
   color: green;
   width: 50%;
-  min-height: 80vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-y: scroll;
+  height: 80vh;
+  /* Track */
+  /* Handle */
+  /* Handle on hover */
+}
+
+.playlist-area::-webkit-scrollbar {
+  width: 2vh;
+}
+
+.playlist-area::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 5px grey;
+          box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+  min-width: 2vh;
+}
+
+.playlist-area::-webkit-scrollbar-thumb {
+  background: lime;
+  border-radius: 10px;
+  height: 100px;
+}
+
+.playlist-area::-webkit-scrollbar-thumb:hover {
+  min-width: 3vh;
+  border: 1px solid white;
 }
 
 #playlist-ul {
@@ -126,7 +259,7 @@
   width: 100%;
   min-height: 8vh;
   padding-left: 3vh;
-  margin-bottom: 1vh;
+  margin-top: 1vh;
   font-size: 1rem;
   font-weight: bold;
   -webkit-box-shadow: 0 1px 3px white, 0 1px 2px #faf8f8;
@@ -141,6 +274,72 @@
   font-size: 1.1rem;
 }
 
+#playlist-ul .active-music {
+  border-left: 3px solid lime;
+  border-top: 3px solid lime;
+}
+
+.show-mobile-playlist-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.show-image {
+  display: none;
+}
+
+.progressbar-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1rem;
+}
+
+.progress-container {
+  min-width: 90%;
+  background-color: grey;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.progress {
+  width: 0%;
+  background: lime;
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+  position: relative;
+}
+
+.drag-button {
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: yellow;
+}
+
+.playlist-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+.playlist-icon:hover {
+  font-size: 3rem;
+}
+
 @media screen and (max-width: 768px) {
   .playlist-area {
     display: none;
@@ -149,6 +348,26 @@
     width: 100%;
   }
   .play-buttons {
+    font-size: 1rem;
+  }
+  .playlist-icon {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .play-buttons {
+    min-height: 8vh;
+  }
+  .song-image {
+    min-height: 75vh;
+  }
+  .footer {
+    min-height: 5vh;
+  }
+  .footer span {
     font-size: 1rem;
   }
 }

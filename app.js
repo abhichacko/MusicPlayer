@@ -22,6 +22,27 @@ const app = () => {
         "./songs/Luis Fonsi, Daddy Yankee - Despacito ft. Justin Bieber.mp3",
       image: "music5.jpg",
     },
+    {
+      songPath: "./songs/Ed Sheeran - Shape of You (Official Music Video).mp3",
+      image: "music5.jpg",
+    },
+    {
+      songPath: "./songs/Alan Walker - Faded.mp3",
+      image: "music5.jpg",
+    },
+    {
+      songPath: "./songs/Coldplay - Hymn For The Weekend (Official Video).mp3",
+      image: "music5.jpg",
+    },
+    {
+      songPath: "./songs/Maroon 5 - Memories (Official Video).mp3",
+      image: "music5.jpg",
+    },
+    {
+      songPath:
+        "./songs/Maroon 5 - Girls Like You ft. Cardi B (Official Music Video).mp3",
+      image: "music5.jpg",
+    },
   ];
   const bannerPlayButton = document.querySelector(".play-icon");
   const banner = document.querySelector(".banner");
@@ -35,10 +56,23 @@ const app = () => {
   const audio = document.getElementById("audio");
   const shuffleButton = document.getElementById("shuffle");
   const playListUl = document.getElementById("playlist-ul");
+  const burgerButton = document.querySelector(".burger");
+  const navLinks = document.querySelector(".nav-links");
+  const playListButton = document.querySelector(".playlist-icon");
+  const playListArea = document.querySelector(".playlist-area");
+  const mobilePlayListArea = document.querySelector(".mobile-playlist-area");
+  const mobilePlayListUl = document.getElementById("mobile-playlist-ul");
+  const progressContainer = document.querySelector(".progress-container");
 
   let isSongPlaying = false;
+  let timer;
+  let percent = 0;
+  audio.volume = volumeBar.value / 100;
 
   const player = () => {
+    burgerButton.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
     playButton.addEventListener("click", () => {
       checkIsSongPlaying();
     });
@@ -48,13 +82,42 @@ const app = () => {
       musicPlayerArea.style.display = "flex";
     });
 
+    audio.ontimeupdate = () => {
+      // console.log((100 * audio.currentTime) / audio.duration);
+      let progress = document.getElementById("progress");
+      progress.style.width = `${Math.floor(
+        (100 * audio.currentTime) / audio.duration
+      )}% `;
+    };
+
+    progressContainer.onclick = (event) => {
+      audio.currentTime =
+        (event.offsetX / progressContainer.offsetWidth) * audio.duration;
+    };
+    playListButton.addEventListener("click", () => {
+      mobilePlayListArea.classList.toggle("show-mobile-playlist-area");
+      songImage.classList.toggle("show-image");
+    });
+
     volumeButton.addEventListener("click", () => {
       volumeBar.classList.toggle("show");
       console.log("dslkhfladsk");
     });
 
-    volumeBar.addEventListener("change", () => {
-      console.log(volumeBar.value);
+    volumeBar.addEventListener("focusout", () => {
+      volumeBar.classList.toggle("show");
+    });
+
+    // focus on window
+
+    volumeBar.addEventListener("input", () => {
+      audio.volume = volumeBar.value / 100;
+      console.log(audio.volume);
+      if (audio.volume == 0) {
+        volumeButton.innerHTML = "volume_off";
+      } else {
+        volumeButton.innerHTML = "volume_up";
+      }
     });
 
     nextButton.addEventListener("click", () => {
@@ -75,6 +138,8 @@ const app = () => {
       songList.sort(() => Math.random() - 0.5);
 
       playListGeneration();
+      playByIndex(0);
+      keepPlayPause();
     });
 
     const checkIsSongPlaying = () => {
@@ -145,10 +210,42 @@ const app = () => {
           console.log(songList[index].songPath);
           playByIndex(index);
           keepPlayPause();
+          playListLi.forEach((item) => {
+            item.classList.remove("active-music");
+          });
+          li.classList.add("active-music");
+        });
+      });
+    };
+    const mobilePlayListGeneration = () => {
+      let playListLi = document.querySelectorAll("#mobile-playlist-ul li");
+      for (let song of songList) {
+        let li = document.createElement("li");
+        li.innerHTML = song.songPath.slice(8);
+        li.setAttribute("value", songList.indexOf(song));
+        console.log(li.getAttribute("value"));
+        mobilePlayListUl.appendChild(li);
+      }
+      playListLi = document.querySelectorAll("#mobile-playlist-ul li");
+      console.log(playListLi);
+      // added click event for each li
+      // call play by index function in each click
+      playListLi.forEach((li) => {
+        li.addEventListener("click", () => {
+          console.log(li.getAttribute("value"));
+          let index = Number(li.getAttribute("value"));
+          console.log(songList[index].songPath);
+          playByIndex(index);
+          keepPlayPause();
+          playListLi.forEach((item) => {
+            item.classList.remove("active-music");
+          });
+          li.classList.add("active-music");
         });
       });
     };
     playListGeneration();
+    mobilePlayListGeneration();
   };
 
   player();

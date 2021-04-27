@@ -9,6 +9,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap"
       rel="stylesheet"
     />
@@ -41,17 +46,30 @@
         <div class="music-player-area">
           <div class="play-area">
             <div class="image-container">
+              <div class="mobile-playlist-area">
+                <ul id="mobile-playlist-ul"></ul>
+              </div>
               <div class="song-image" value="0"></div>
               <audio src="./songs/Alone_320(PaglaSongs).mp3" id="audio"></audio>
               <input
                 type="range"
-                min="1"
+                min="0"
                 max="100"
                 value="50"
                 class="volume-slider"
-                id="myRange"
+                step="1"
                 orient="vertical"
               />
+            </div>
+
+            <div class="progressbar-area">
+              <div class="progress-container">
+                <div class="progress" id="progress"></div>
+                <div class="drag-button"></div>
+              </div>
+              <div class="playlist-icon">
+                <span class="material-icons"> playlist_play </span>
+              </div>
             </div>
 
             <div class="play-buttons">
@@ -60,7 +78,6 @@
               <span class="material-icons" id="play">play_circle</span>
 
               <span class="material-icons">skip_next</span>
-              <span class="material-icons">repeat</span>
 
               <span class="material-icons volume-button">volume_up</span>
             </div>
@@ -71,7 +88,14 @@
           </div>
         </div>
       </div>
-      <div class="footer">footer</div>
+      <div class="footer">
+        <span class="material-icons">facebook</span>
+
+        <span class="fa fa-twitter"></span>
+        <a href="https://github.com/abhichacko">
+          <span class="fa fa-github"></span>
+        </a>
+      </div>
     </div>
 
     <script src="app.js"></script>
