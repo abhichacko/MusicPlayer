@@ -83,8 +83,8 @@ nav {
 }
 .banner {
   color: $color-banner;
-  // display: flex;
-  display: none;
+  display: flex;
+  // display: none;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -132,7 +132,7 @@ nav {
     background-color: white;
   }
   .banner {
-    width: 80%;
+    width: 70%;
   }
 }
 
@@ -140,24 +140,39 @@ nav {
   nav {
     flex-direction: column;
     min-height: 3vh;
+    background-color: black;
   }
   .nav-links {
     display: none;
+    position: absolute;
+    top: 6%;
+    background-color: black;
     flex-direction: column;
     align-items: center;
     align-content: center;
     justify-content: center;
     width: 100%;
+    min-height: 25vh;
     li {
       border-top: 0.3px solid rgb(17, 34, 23);
       width: 100%;
       display: flex;
       justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      min-height: 8vh;
+
+      &:hover {
+        border-left: 4px solid $color-banner;
+        border-right: 4px solid $color-banner;
+        font-size: 2.5rem;
+      }
     }
   }
   .logo-container {
     width: 100%;
     justify-content: flex-end;
+    min-height: 6vh;
   }
   .logo {
     display: none;
@@ -167,6 +182,13 @@ nav {
     justify-content: center;
     align-items: center;
     color: $color-white;
+    margin-right: 2rem;
+    span {
+      font-size: 2rem;
+      &:hover {
+        font-size: 2.5rem;
+      }
+    }
   }
   .main {
     min-height: 80vh;
@@ -175,7 +197,9 @@ nav {
     width: 100%;
   }
   .banner h1 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 

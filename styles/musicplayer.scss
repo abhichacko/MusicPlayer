@@ -7,7 +7,8 @@ $breakpoint-desktop: 1024px;
   width: 100%;
   //   border: 1px solid white;
   min-height: 80vh;
-  display: flex;
+  display: none;
+  // display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -19,6 +20,7 @@ $breakpoint-desktop: 1024px;
   display: flex;
   flex-direction: column;
   color: $color-banner;
+  background-color: black;
 }
 .image-container {
   width: 100%;
@@ -32,56 +34,13 @@ $breakpoint-desktop: 1024px;
   background-image: url(../images/music1.jpg);
   background-size: cover;
 }
-.mobile-playlist-area {
-  border-left: 1px solid rgb(241, 239, 239);
-  color: green;
-  width: 97%;
-  display: none;
-  overflow-y: scroll;
-  height: 65vh;
-  &::-webkit-scrollbar {
-    width: 2vh;
-    display: none;
-  }
-}
-#mobile-playlist-ul {
-  display: flex;
-  flex-direction: column;
-  list-style-type: none;
-  align-items: flex-start;
-  width: 96%;
-  margin-left: 3vh;
-  li {
-    display: flex;
-    align-items: center;
-    background-color: black;
-    // border: 1px solid blanchedalmond;
-    border-radius: 3%;
-    width: 100%;
-    min-height: 8vh;
-    padding-left: 3vh;
-    margin-bottom: 1vh;
-    font-size: 0.9rem;
-    font-weight: bold;
-    box-shadow: 0 1px 3px rgb(255, 255, 255), 0 1px 2px rgb(250, 248, 248);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    &:hover {
-      box-shadow: 0 14px 28px rgba(243, 236, 236, 0.822),
-        0 10px 10px rgba(238, 231, 231, 0.767);
-      font-size: 1rem;
-    }
-  }
-}
-
-#mobile-playlist-ul .active-music {
-  border-left: 3px solid $color-banner;
-  border-top: 3px solid $color-banner;
-}
 
 .volume-slider {
   align-self: flex-end;
   display: none;
-
+  position: absolute;
+  left: 85vh;
+  margin-bottom: 2rem;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   -webkit-appearance: slider-vertical;
   background-color: grey;
@@ -124,6 +83,9 @@ $breakpoint-desktop: 1024px;
 .show {
   transform: translateY(0);
   display: flex;
+}
+.mobile-playlist-area {
+  display: none;
 }
 
 .play-buttons {
@@ -214,9 +176,6 @@ $breakpoint-desktop: 1024px;
   border-top: 3px solid $color-banner;
 }
 
-.show-mobile-playlist-area {
-  display: flex;
-}
 .show-image {
   display: none;
 }
@@ -232,6 +191,7 @@ $breakpoint-desktop: 1024px;
   background-color: grey;
   display: flex;
   flex-direction: row;
+  border-radius: 1rem;
 }
 .progress {
   width: 0%;
@@ -241,10 +201,10 @@ $breakpoint-desktop: 1024px;
   position: relative;
 }
 .drag-button {
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  background-color: yellow;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.2rem;
+  background-color: rgb(10, 51, 4);
 }
 
 .playlist-icon {
@@ -274,14 +234,102 @@ $breakpoint-desktop: 1024px;
 @media screen and (max-width: $breakpoint-mobile) {
   .play-buttons {
     min-height: 8vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1rem;
+    span {
+      font-size: 1.5rem;
+      &:hover {
+        font-size: 2rem;
+      }
+    }
+    span:nth-child(3) {
+      font-size: 2.5rem;
+      &:hover {
+        font-size: 3rem;
+      }
+    }
   }
   .song-image {
-    min-height: 75vh;
+    min-height: 65vh;
   }
   .footer {
+    margin-top: 1.5rem;
     min-height: 5vh;
     span {
-      font-size: 1rem;
+      font-size: 0.8rem;
     }
+  }
+
+  .progressbar-area {
+    max-width: 85%;
+    justify-content: space-around;
+    margin-left: 2rem;
+    margin-top: 2rem;
+  }
+  .progressbar-area .playlist-icon {
+    margin-left: 1rem;
+  }
+  .progress-container {
+    border-radius: 1rem;
+    max-height: 1.5vh;
+  }
+  .drag-button {
+    height: 0.5rem;
+    width: 1rem;
+  }
+  .volume-slider {
+    left: 40vh;
+    background-color: black;
+  }
+  .mobile-playlist-area {
+    border-left: 1px solid rgb(241, 239, 239);
+    color: green;
+    width: 97%;
+    display: none;
+    overflow-y: scroll;
+    height: 66vh;
+    padding-top: 1rem;
+    &::-webkit-scrollbar {
+      width: 2vh;
+      display: none;
+    }
+  }
+  #mobile-playlist-ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    align-items: flex-start;
+    width: 96%;
+    margin-left: 3vh;
+    li {
+      display: flex;
+      align-items: center;
+      background-color: black;
+      // border: 1px solid blanchedalmond;
+      border-radius: 3%;
+      width: 100%;
+      min-height: 8vh;
+      padding-left: 3vh;
+      margin-bottom: 1vh;
+      font-size: 0.9rem;
+      font-weight: bold;
+      box-shadow: 0 1px 3px rgb(255, 255, 255), 0 1px 2px rgb(250, 248, 248);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      &:hover {
+        box-shadow: 0 14px 28px rgba(243, 236, 236, 0.822),
+          0 10px 10px rgba(238, 231, 231, 0.767);
+        font-size: 1rem;
+      }
+    }
+  }
+
+  #mobile-playlist-ul .active-music {
+    border-left: 3px solid $color-banner;
+    border-top: 3px solid $color-banner;
+  }
+
+  .show-mobile-playlist-area {
+    display: flex;
   }
 }

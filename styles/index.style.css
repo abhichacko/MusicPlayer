@@ -122,7 +122,9 @@ nav {
 
 .banner {
   color: lime;
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -193,7 +195,7 @@ nav {
     background-color: white;
   }
   .banner {
-    width: 80%;
+    width: 70%;
   }
 }
 
@@ -204,9 +206,13 @@ nav {
         -ms-flex-direction: column;
             flex-direction: column;
     min-height: 3vh;
+    background-color: black;
   }
   .nav-links {
     display: none;
+    position: absolute;
+    top: 6%;
+    background-color: black;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -220,6 +226,7 @@ nav {
         -ms-flex-pack: center;
             justify-content: center;
     width: 100%;
+    min-height: 25vh;
   }
   .nav-links li {
     border-top: 0.3px solid #112217;
@@ -230,12 +237,23 @@ nav {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 2rem;
+    min-height: 8vh;
+  }
+  .nav-links li:hover {
+    border-left: 4px solid lime;
+    border-right: 4px solid lime;
+    font-size: 2.5rem;
   }
   .logo-container {
     width: 100%;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+    min-height: 6vh;
   }
   .logo {
     display: none;
@@ -251,6 +269,13 @@ nav {
         -ms-flex-align: center;
             align-items: center;
     color: white;
+    margin-right: 2rem;
+  }
+  .burger span {
+    font-size: 2rem;
+  }
+  .burger span:hover {
+    font-size: 2.5rem;
   }
   .main {
     min-height: 80vh;
@@ -259,7 +284,9 @@ nav {
     width: 100%;
   }
   .banner h1 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 

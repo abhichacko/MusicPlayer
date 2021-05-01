@@ -63,6 +63,8 @@ const app = () => {
   const mobilePlayListArea = document.querySelector(".mobile-playlist-area");
   const mobilePlayListUl = document.getElementById("mobile-playlist-ul");
   const progressContainer = document.querySelector(".progress-container");
+  const navLinksLi = document.querySelectorAll(".nav-links li");
+  console.log(navLinksLi);
 
   let isSongPlaying = false;
   let timer;
@@ -70,8 +72,20 @@ const app = () => {
   audio.volume = volumeBar.value / 100;
 
   const player = () => {
+    navLinksLi.forEach((li, index) => {
+      li.addEventListener("click", () => {
+        if (navLinks.classList.contains("show")) {
+          navLinks.classList.toggle("show");
+          burgerButton.innerHTML = "menu";
+        }
+      });
+    });
+
     burgerButton.addEventListener("click", () => {
       navLinks.classList.toggle("show");
+      if (burgerButton.innerHTML === "menu")
+        burgerButton.innerHTML = "menu_open";
+      else burgerButton.innerHTML = "menu";
     });
     playButton.addEventListener("click", () => {
       checkIsSongPlaying();
@@ -97,6 +111,16 @@ const app = () => {
     playListButton.addEventListener("click", () => {
       mobilePlayListArea.classList.toggle("show-mobile-playlist-area");
       songImage.classList.toggle("show-image");
+    });
+
+    songImage.addEventListener("click", () => {
+      if (navLinks.classList.contains("show")) {
+        navLinks.classList.toggle("show");
+        burgerButton.innerHTML = "menu";
+      }
+      if (volumeBar.classList.contains("show")) {
+        volumeBar.classList.toggle("show");
+      }
     });
 
     volumeButton.addEventListener("click", () => {
@@ -241,6 +265,13 @@ const app = () => {
             item.classList.remove("active-music");
           });
           li.classList.add("active-music");
+          if (volumeBar.classList.contains("show")) {
+            volumeBar.classList.toggle("show");
+          }
+          if (navLinks.classList.contains("show")) {
+            navLinks.classList.toggle("show");
+            burgerButton.innerHTML = "menu";
+          }
         });
       });
     };
