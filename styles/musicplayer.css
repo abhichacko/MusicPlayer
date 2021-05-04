@@ -294,6 +294,68 @@
     display: -ms-flexbox;
     display: flex;
   }
+  .mobile-playlist-area {
+    border-left: 1px solid #f1efef;
+    color: green;
+    width: 97%;
+    display: none;
+    overflow-y: scroll;
+    height: 66vh;
+    padding-top: 1rem;
+  }
+  .mobile-playlist-area::-webkit-scrollbar {
+    width: 2vh;
+    display: none;
+  }
+  #mobile-playlist-ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    list-style-type: none;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    width: 96%;
+    margin-left: 4.5vh;
+  }
+  #mobile-playlist-ul li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background-color: black;
+    border-radius: 2%;
+    width: 90%;
+    min-height: 8vh;
+    padding-left: 3vh;
+    margin-bottom: 1vh;
+    font-size: 0.9rem;
+    font-weight: bold;
+    -webkit-box-shadow: 0 1px 3px white, 0 1px 2px #faf8f8;
+            box-shadow: 0 1px 3px white, 0 1px 2px #faf8f8;
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+  #mobile-playlist-ul li:hover {
+    -webkit-box-shadow: 0 14px 28px rgba(243, 236, 236, 0.822), 0 10px 10px rgba(238, 231, 231, 0.767);
+            box-shadow: 0 14px 28px rgba(243, 236, 236, 0.822), 0 10px 10px rgba(238, 231, 231, 0.767);
+    font-size: 1rem;
+  }
+  #mobile-playlist-ul .active-music {
+    border-left: 3px solid lime;
+    border-top: 3px solid lime;
+  }
+  .show-mobile-playlist-area {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -346,68 +408,6 @@
   .volume-slider {
     left: 34vh;
     background-color: black;
-  }
-  .mobile-playlist-area {
-    border-left: 1px solid #f1efef;
-    color: green;
-    width: 97%;
-    display: none;
-    overflow-y: scroll;
-    height: 66vh;
-    padding-top: 1rem;
-  }
-  .mobile-playlist-area::-webkit-scrollbar {
-    width: 2vh;
-    display: none;
-  }
-  #mobile-playlist-ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    list-style-type: none;
-    -webkit-box-align: start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    width: 96%;
-    margin-left: 3vh;
-  }
-  #mobile-playlist-ul li {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    background-color: black;
-    border-radius: 3%;
-    width: 100%;
-    min-height: 8vh;
-    padding-left: 3vh;
-    margin-bottom: 1vh;
-    font-size: 0.9rem;
-    font-weight: bold;
-    -webkit-box-shadow: 0 1px 3px white, 0 1px 2px #faf8f8;
-            box-shadow: 0 1px 3px white, 0 1px 2px #faf8f8;
-    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  }
-  #mobile-playlist-ul li:hover {
-    -webkit-box-shadow: 0 14px 28px rgba(243, 236, 236, 0.822), 0 10px 10px rgba(238, 231, 231, 0.767);
-            box-shadow: 0 14px 28px rgba(243, 236, 236, 0.822), 0 10px 10px rgba(238, 231, 231, 0.767);
-    font-size: 1rem;
-  }
-  #mobile-playlist-ul .active-music {
-    border-left: 3px solid lime;
-    border-top: 3px solid lime;
-  }
-  .show-mobile-playlist-area {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
   }
 }
 /*# sourceMappingURL=musicplayer.css.map */

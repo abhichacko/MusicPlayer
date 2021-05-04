@@ -24,24 +24,24 @@ const app = () => {
     },
     {
       songPath: "./songs/Ed Sheeran - Shape of You (Official Music Video).mp3",
-      image: "music5.jpg",
+      image: "music6.jpg",
     },
     {
       songPath: "./songs/Alan Walker - Faded.mp3",
-      image: "music5.jpg",
+      image: "music7.jpg",
     },
     {
       songPath: "./songs/Coldplay - Hymn For The Weekend (Official Video).mp3",
-      image: "music5.jpg",
+      image: "music8.jpg",
     },
     {
       songPath: "./songs/Maroon 5 - Memories (Official Video).mp3",
-      image: "music5.jpg",
+      image: "music9.jpg",
     },
     {
       songPath:
         "./songs/Maroon 5 - Girls Like You ft. Cardi B (Official Music Video).mp3",
-      image: "music5.jpg",
+      image: "music10.jpg",
     },
   ];
   const bannerPlayButton = document.querySelector(".play-icon");
@@ -64,12 +64,21 @@ const app = () => {
   const mobilePlayListUl = document.getElementById("mobile-playlist-ul");
   const progressContainer = document.querySelector(".progress-container");
   const navLinksLi = document.querySelectorAll(".nav-links li");
-  console.log(navLinksLi);
+  const smallDevice = window.matchMedia("(min-width: 768px)");
 
   let isSongPlaying = false;
   let timer;
   let percent = 0;
   audio.volume = volumeBar.value / 100;
+
+  smallDevice.addEventListener("change", (e) => {
+    if (e.matches) {
+      if (mobilePlayListArea.classList.contains("show-mobile-playlist-area")) {
+        mobilePlayListArea.classList.toggle("show-mobile-playlist-area");
+        songImage.classList.toggle("show-image");
+      }
+    }
+  });
 
   const player = () => {
     navLinksLi.forEach((li, index) => {
@@ -125,7 +134,6 @@ const app = () => {
 
     volumeButton.addEventListener("click", () => {
       volumeBar.classList.toggle("show");
-      console.log("dslkhfladsk");
     });
 
     volumeBar.addEventListener("focusout", () => {
@@ -136,7 +144,7 @@ const app = () => {
 
     volumeBar.addEventListener("input", () => {
       audio.volume = volumeBar.value / 100;
-      console.log(audio.volume);
+
       if (audio.volume == 0) {
         volumeButton.innerHTML = "volume_off";
       } else {
@@ -145,7 +153,6 @@ const app = () => {
     });
 
     nextButton.addEventListener("click", () => {
-      console.log("hsldfsdk");
       songChange("next");
       keepPlayPause();
     });
@@ -155,15 +162,25 @@ const app = () => {
       keepPlayPause();
     });
 
+    audio.addEventListener("ended", () => {
+      songChange("next");
+      keepPlayPause();
+    });
+
     shuffleButton.addEventListener("click", () => {
-      console.log("hi");
       let playListLi = document.querySelectorAll("#playlist-ul li");
       for (let li of playListLi) playListUl.removeChild(li);
+      let mobilePlayListLi = document.querySelectorAll(
+        "#mobile-playlist-ul li"
+      );
+      for (let li of mobilePlayListLi) mobilePlayListUl.removeChild(li);
       songList.sort(() => Math.random() - 0.5);
 
       playListGeneration();
+      mobilePlayListGeneration();
       playByIndex(0);
       keepPlayPause();
+      activePlay(0);
     });
 
     const checkIsSongPlaying = () => {
@@ -196,17 +213,35 @@ const app = () => {
           console.log("error");
           break;
       }
-      console.log(songIndex);
+
       playByIndex(songIndex);
+    };
+    const activePlay = (index) => {
+      let playListLi = document.querySelectorAll("#playlist-ul li");
+      playListLi.forEach((item) => {
+        item.classList.remove("active-music");
+      });
+      playListLi[index].classList.add("active-music");
+
+      let mobilePlayListLi = document.querySelectorAll(
+        "#mobile-playlist-ul li"
+      );
+      mobilePlayListLi.forEach((item) => {
+        item.classList.remove("active-music");
+      });
+      mobilePlayListLi[index].classList.add("active-music");
+      mobilePlayListLi[index].focus();
+      let activeLi = document.getElementById(`li-${index}`);
+      activeLi.scrollIntoView();
     };
 
     const playByIndex = (songIndex) => {
-      console.log("play by index");
       let newImageUrl = `url(./images/${songList[songIndex].image})`;
       let newSongURL = songList[songIndex].songPath;
       songImage.setAttribute("value", songIndex);
       songImage.style.backgroundImage = newImageUrl;
       audio.src = newSongURL;
+      activePlay(songIndex);
     };
     const keepPlayPause = () => {
       if (isSongPlaying) {
@@ -217,11 +252,12 @@ const app = () => {
     };
     const playListGeneration = () => {
       let playListLi = document.querySelectorAll("#playlist-ul li");
+
       for (let song of songList) {
         let li = document.createElement("li");
         li.innerHTML = song.songPath.slice(8);
         li.setAttribute("value", songList.indexOf(song));
-        console.log(li.getAttribute("value"));
+
         playListUl.appendChild(li);
       }
       playListLi = document.querySelectorAll("#playlist-ul li");
@@ -229,9 +265,8 @@ const app = () => {
       // call play by index function in each click
       playListLi.forEach((li) => {
         li.addEventListener("click", () => {
-          console.log(li.getAttribute("value"));
           let index = Number(li.getAttribute("value"));
-          console.log(songList[index].songPath);
+
           playByIndex(index);
           keepPlayPause();
           playListLi.forEach((item) => {
@@ -241,24 +276,26 @@ const app = () => {
         });
       });
     };
+
     const mobilePlayListGeneration = () => {
       let playListLi = document.querySelectorAll("#mobile-playlist-ul li");
+
       for (let song of songList) {
         let li = document.createElement("li");
         li.innerHTML = song.songPath.slice(8);
         li.setAttribute("value", songList.indexOf(song));
-        console.log(li.getAttribute("value"));
+        li.setAttribute("id", `li-${songList.indexOf(song)}`);
+
         mobilePlayListUl.appendChild(li);
       }
       playListLi = document.querySelectorAll("#mobile-playlist-ul li");
-      console.log(playListLi);
+
       // added click event for each li
       // call play by index function in each click
       playListLi.forEach((li) => {
         li.addEventListener("click", () => {
-          console.log(li.getAttribute("value"));
           let index = Number(li.getAttribute("value"));
-          console.log(songList[index].songPath);
+
           playByIndex(index);
           keepPlayPause();
           playListLi.forEach((item) => {
@@ -277,6 +314,7 @@ const app = () => {
     };
     playListGeneration();
     mobilePlayListGeneration();
+    activePlay(0);
   };
 
   player();

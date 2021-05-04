@@ -230,6 +230,56 @@ $breakpoint-desktop: 1024px;
   .playlist-icon {
     display: flex;
   }
+  .mobile-playlist-area {
+    border-left: 1px solid rgb(241, 239, 239);
+    color: green;
+    width: 97%;
+    display: none;
+    overflow-y: scroll;
+    height: 66vh;
+    padding-top: 1rem;
+    &::-webkit-scrollbar {
+      width: 2vh;
+      display: none;
+    }
+  }
+  #mobile-playlist-ul {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    align-items: flex-start;
+    width: 96%;
+    margin-left: 4.5vh;
+    li {
+      display: flex;
+      align-items: center;
+      background-color: black;
+      // border: 1px solid blanchedalmond;
+      border-radius: 2%;
+      width: 90%;
+      min-height: 8vh;
+      padding-left: 3vh;
+      margin-bottom: 1vh;
+      font-size: 0.9rem;
+      font-weight: bold;
+      box-shadow: 0 1px 3px rgb(255, 255, 255), 0 1px 2px rgb(250, 248, 248);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      &:hover {
+        box-shadow: 0 14px 28px rgba(243, 236, 236, 0.822),
+          0 10px 10px rgba(238, 231, 231, 0.767);
+        font-size: 1rem;
+      }
+    }
+  }
+
+  #mobile-playlist-ul .active-music {
+    border-left: 3px solid $color-banner;
+    border-top: 3px solid $color-banner;
+  }
+
+  .show-mobile-playlist-area {
+    display: flex;
+  }
 }
 @media screen and (max-width: $breakpoint-mobile) {
   .play-buttons {
@@ -281,55 +331,5 @@ $breakpoint-desktop: 1024px;
   .volume-slider {
     left: 34vh;
     background-color: black;
-  }
-  .mobile-playlist-area {
-    border-left: 1px solid rgb(241, 239, 239);
-    color: green;
-    width: 97%;
-    display: none;
-    overflow-y: scroll;
-    height: 66vh;
-    padding-top: 1rem;
-    &::-webkit-scrollbar {
-      width: 2vh;
-      display: none;
-    }
-  }
-  #mobile-playlist-ul {
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    align-items: flex-start;
-    width: 96%;
-    margin-left: 3vh;
-    li {
-      display: flex;
-      align-items: center;
-      background-color: black;
-      // border: 1px solid blanchedalmond;
-      border-radius: 3%;
-      width: 100%;
-      min-height: 8vh;
-      padding-left: 3vh;
-      margin-bottom: 1vh;
-      font-size: 0.9rem;
-      font-weight: bold;
-      box-shadow: 0 1px 3px rgb(255, 255, 255), 0 1px 2px rgb(250, 248, 248);
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      &:hover {
-        box-shadow: 0 14px 28px rgba(243, 236, 236, 0.822),
-          0 10px 10px rgba(238, 231, 231, 0.767);
-        font-size: 1rem;
-      }
-    }
-  }
-
-  #mobile-playlist-ul .active-music {
-    border-left: 3px solid $color-banner;
-    border-top: 3px solid $color-banner;
-  }
-
-  .show-mobile-playlist-area {
-    display: flex;
   }
 }
