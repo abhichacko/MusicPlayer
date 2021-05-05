@@ -73,6 +73,7 @@ const app = () => {
   let timer;
   let percent = 0;
   let isMouseDown = false;
+  let isTouchDown = false;
   audio.volume = volumeBar.value / 100;
 
   smallDevice.addEventListener("change", (e) => {
@@ -131,6 +132,7 @@ const app = () => {
     progressContainer.addEventListener(
       "mousemove",
       (event) => {
+        console.log("mouse move");
         if (isMouseDown) {
           audio.currentTime =
             (event.offsetX / progressContainer.offsetWidth) * audio.duration;
@@ -138,10 +140,31 @@ const app = () => {
       },
       true
     );
+    progressContainer.addEventListener("touchstart", (e) => {
+      isTouchDown = true;
+    });
+    progressContainer.addEventListener("touchend", () => {
+      isTouchDown = false;
+    });
+
+    //for mobile touch and drag
+    progressContainer.addEventListener(
+      "touchmove",
+      (event) => {
+        console.log("touch move");
+        if (isTouchDown) {
+          let bcr = event.target.getBoundingClientRect();
+          let offsetX = event.targetTouches[0].clientX - bcr.x;
+          audio.currentTime =
+            (offsetX / progressContainer.offsetWidth) * audio.duration;
+        }
+      },
+      true
+    );
     progressContainer.addEventListener("mouseleave", () => {
       isMouseDown = false;
     });
-    progressContainer.addEventListener("click", () => {
+    progressContainer.addEventListener("click", (event) => {
       audio.currentTime =
         (event.offsetX / progressContainer.offsetWidth) * audio.duration;
     });
