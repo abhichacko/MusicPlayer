@@ -38,25 +38,31 @@
   background-size: cover;
 }
 
+.volume-container {
+  display: none;
+  min-height: 65vh;
+}
+
 .volume-slider {
   -ms-flex-item-align: end;
       align-self: flex-end;
-  display: none;
   position: absolute;
-  left: 85vh;
+  left: 65vh;
+  top: 40vh;
+  width: 61vh;
   margin-bottom: 2rem;
   -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  -webkit-appearance: slider-vertical;
-  background-color: grey;
-  min-height: 40vh;
+  -webkit-appearance: none;
+  background-color: black;
   border-radius: 5%;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
+  -webkit-transform: rotate(270deg);
+  transform: rotate(270deg);
   -webkit-transition: -webkit-transform ease-out 0.5s;
   transition: -webkit-transform ease-out 0.5s;
   transition: transform ease-out 0.5s;
   transition: transform ease-out 0.5s, -webkit-transform ease-out 0.5s;
+  -webkit-transition: 0.2s;
 }
 
 .volume-slider::-moz-range-progress {
@@ -78,12 +84,10 @@
 
 .volume-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  -webkit-box-shadow: 1px 1px 1px #000000, 0px 0px 1px #fffefe;
-          box-shadow: 1px 1px 1px #000000, 0px 0px 1px #fffefe;
-  height: 2vh;
-  width: 2vh;
+  height: 2.5vh;
+  width: 2.5vh;
   border-radius: 1vh;
-  background: lime;
+  background: #0a3304;
   cursor: pointer;
 }
 
@@ -94,9 +98,17 @@
   cursor: pointer;
 }
 
+.volume-slider::-ms-fill-lower {
+  background: #eb0f0f;
+  border-radius: 10px;
+}
+
+.volume-progress {
+  height: 50%;
+  background-color: lime;
+}
+
 .show {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -256,9 +268,11 @@
 .progress {
   width: 0%;
   background: lime;
-  -webkit-transition: all 0.6s ease;
-  transition: all 0.6s ease;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   position: relative;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 
 .drag-button {
@@ -406,7 +420,8 @@
     width: 1rem;
   }
   .volume-slider {
-    left: 34vh;
+    left: 17vh;
+    top: 37vh;
     background-color: black;
   }
 }

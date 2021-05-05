@@ -48,6 +48,7 @@ const app = () => {
   const banner = document.querySelector(".banner");
   const volumeButton = document.querySelector(".volume-button");
   const volumeBar = document.querySelector(".volume-slider");
+  const volumeContainer = document.querySelector(".volume-container");
   const musicPlayerArea = document.querySelector(".music-player-area");
   const nextButton = document.querySelector(".play-buttons span:nth-child(4)");
   const playButton = document.getElementById("play");
@@ -63,12 +64,15 @@ const app = () => {
   const mobilePlayListArea = document.querySelector(".mobile-playlist-area");
   const mobilePlayListUl = document.getElementById("mobile-playlist-ul");
   const progressContainer = document.querySelector(".progress-container");
+  const main = document.querySelector(".main");
+  const dragButton = document.querySelector(".drag-button");
   const navLinksLi = document.querySelectorAll(".nav-links li");
   const smallDevice = window.matchMedia("(min-width: 768px)");
 
   let isSongPlaying = false;
   let timer;
   let percent = 0;
+  let isMouseDown = false;
   audio.volume = volumeBar.value / 100;
 
   smallDevice.addEventListener("change", (e) => {
@@ -105,6 +109,11 @@ const app = () => {
       musicPlayerArea.style.display = "flex";
     });
 
+    const closeVolumeBar = () => {
+      if (volumeContainer.classList.contains("show")) {
+        volumeContainer.classList.toggle("show");
+      }
+    };
     audio.ontimeupdate = () => {
       // console.log((100 * audio.currentTime) / audio.duration);
       let progress = document.getElementById("progress");
@@ -113,13 +122,33 @@ const app = () => {
       )}% `;
     };
 
-    progressContainer.onclick = (event) => {
+    progressContainer.addEventListener("mousedown", () => {
+      isMouseDown = true;
+    });
+    progressContainer.addEventListener("mouseup", () => {
+      isMouseDown = false;
+    });
+    progressContainer.addEventListener(
+      "mousemove",
+      (event) => {
+        if (isMouseDown) {
+          audio.currentTime =
+            (event.offsetX / progressContainer.offsetWidth) * audio.duration;
+        }
+      },
+      true
+    );
+    progressContainer.addEventListener("mouseleave", () => {
+      isMouseDown = false;
+    });
+    progressContainer.addEventListener("click", () => {
       audio.currentTime =
         (event.offsetX / progressContainer.offsetWidth) * audio.duration;
-    };
+    });
     playListButton.addEventListener("click", () => {
       mobilePlayListArea.classList.toggle("show-mobile-playlist-area");
       songImage.classList.toggle("show-image");
+      closeVolumeBar();
     });
 
     songImage.addEventListener("click", () => {
@@ -127,17 +156,16 @@ const app = () => {
         navLinks.classList.toggle("show");
         burgerButton.innerHTML = "menu";
       }
-      if (volumeBar.classList.contains("show")) {
-        volumeBar.classList.toggle("show");
-      }
+      closeVolumeBar();
     });
 
     volumeButton.addEventListener("click", () => {
-      volumeBar.classList.toggle("show");
+      volumeContainer.classList.toggle("show");
+      setTimeout(closeVolumeBar, 5000);
     });
 
     volumeBar.addEventListener("focusout", () => {
-      volumeBar.classList.toggle("show");
+      volumeContainer.classList.toggle("show");
     });
 
     // focus on window
@@ -302,9 +330,7 @@ const app = () => {
             item.classList.remove("active-music");
           });
           li.classList.add("active-music");
-          if (volumeBar.classList.contains("show")) {
-            volumeBar.classList.toggle("show");
-          }
+          closeVolumeBar();
           if (navLinks.classList.contains("show")) {
             navLinks.classList.toggle("show");
             burgerButton.innerHTML = "menu";

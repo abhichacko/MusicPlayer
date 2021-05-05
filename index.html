@@ -51,15 +51,17 @@
               </div>
               <div class="song-image" value="0"></div>
               <audio src="./songs/Alone_320(PaglaSongs).mp3" id="audio"></audio>
-              <input
-                type="range"
-                min="0"
-                max="100"
-                value="50"
-                class="volume-slider"
-                step="1"
-                orient="vertical"
-              />
+              <div class="volume-container">
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="50"
+                  class="volume-slider"
+                  step="1"
+                />
+                <div class="volume-progress"></div>
+              </div>
             </div>
 
             <div class="progressbar-area">
