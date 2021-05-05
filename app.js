@@ -123,51 +123,56 @@ const app = () => {
       )}% `;
     };
 
-    progressContainer.addEventListener("mousedown", () => {
-      isMouseDown = true;
-    });
-    progressContainer.addEventListener("mouseup", () => {
-      isMouseDown = false;
-    });
-    progressContainer.addEventListener(
-      "mousemove",
-      (event) => {
-        console.log("mouse move");
-        if (isMouseDown) {
-          audio.currentTime =
-            (event.offsetX / progressContainer.offsetWidth) * audio.duration;
-        }
-      },
-      true
-    );
-    progressContainer.addEventListener("touchstart", (e) => {
+    // progressContainer.addEventListener("mousedown", () => {
+    //   isMouseDown = true;
+    // });
+    // progressContainer.addEventListener("mouseup", () => {
+    //   isMouseDown = false;
+    // });
+    // progressContainer.addEventListener(
+    //   "mousemove",
+    //   (event) => {
+    //     console.log("mouse move");
+    //     if (isMouseDown) {
+    //       audio.currentTime =
+    //         (event.offsetX / progressContainer.offsetWidth) * audio.duration;
+    //     }
+    //   },
+    //   true
+    // );
+    progressContainer.addEventListener("touchstart", (event) => {
       isTouchDown = true;
+      console.log("touch start");
+      if (isTouchDown) {
+        let bcr = event.target.getBoundingClientRect();
+        let offsetX = event.targetTouches[0].pageX - bcr.left;
+        audio.currentTime =
+          (offsetX / progressContainer.offsetWidth) * audio.duration;
+      }
     });
     progressContainer.addEventListener("touchend", () => {
       isTouchDown = false;
+      console.log("touch end");
     });
 
     //for mobile touch and drag
-    progressContainer.addEventListener(
-      "touchmove",
-      (event) => {
-        console.log("touch move");
-        if (isTouchDown) {
-          let bcr = event.target.getBoundingClientRect();
-          let offsetX = event.targetTouches[0].clientX - bcr.x;
-          audio.currentTime =
-            (offsetX / progressContainer.offsetWidth) * audio.duration;
-        }
-      },
-      true
-    );
+    progressContainer.addEventListener("touchmove", (event) => {
+      console.log("touch move");
+      if (isTouchDown) {
+        let bcr = event.target.getBoundingClientRect();
+        let offsetX = event.targetTouches[0].pageX - bcr.left;
+        audio.currentTime =
+          (offsetX / progressContainer.offsetWidth) * audio.duration;
+      }
+      console.log(progressContainer.offsetWidth);
+    });
     progressContainer.addEventListener("mouseleave", () => {
       isMouseDown = false;
     });
-    progressContainer.addEventListener("click", (event) => {
-      audio.currentTime =
-        (event.offsetX / progressContainer.offsetWidth) * audio.duration;
-    });
+    // progressContainer.addEventListener("click", (event) => {
+    //   audio.currentTime =
+    //     (event.offsetX / progressContainer.offsetWidth) * audio.duration;
+    // });
     playListButton.addEventListener("click", () => {
       mobilePlayListArea.classList.toggle("show-mobile-playlist-area");
       songImage.classList.toggle("show-image");
