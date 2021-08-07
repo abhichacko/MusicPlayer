@@ -123,23 +123,23 @@ const app = () => {
       )}% `;
     };
 
-    // progressContainer.addEventListener("mousedown", () => {
-    //   isMouseDown = true;
-    // });
-    // progressContainer.addEventListener("mouseup", () => {
-    //   isMouseDown = false;
-    // });
-    // progressContainer.addEventListener(
-    //   "mousemove",
-    //   (event) => {
-    //     console.log("mouse move");
-    //     if (isMouseDown) {
-    //       audio.currentTime =
-    //         (event.offsetX / progressContainer.offsetWidth) * audio.duration;
-    //     }
-    //   },
-    //   true
-    // );
+    progressContainer.addEventListener("mousedown", () => {
+      isMouseDown = true;
+    });
+    progressContainer.addEventListener("mouseup", () => {
+      isMouseDown = false;
+    });
+    progressContainer.addEventListener(
+      "mousemove",
+      (event) => {
+        console.log("mouse move");
+        if (isMouseDown) {
+          audio.currentTime =
+            (event.offsetX / progressContainer.offsetWidth) * audio.duration;
+        }
+      },
+      true
+    );
     progressContainer.addEventListener("touchstart", (event) => {
       isTouchDown = true;
       console.log("touch start");
@@ -169,10 +169,10 @@ const app = () => {
     progressContainer.addEventListener("mouseleave", () => {
       isMouseDown = false;
     });
-    // progressContainer.addEventListener("click", (event) => {
-    //   audio.currentTime =
-    //     (event.offsetX / progressContainer.offsetWidth) * audio.duration;
-    // });
+    progressContainer.addEventListener("click", (event) => {
+      audio.currentTime =
+        (event.offsetX / progressContainer.offsetWidth) * audio.duration;
+    });
     playListButton.addEventListener("click", () => {
       mobilePlayListArea.classList.toggle("show-mobile-playlist-area");
       songImage.classList.toggle("show-image");
