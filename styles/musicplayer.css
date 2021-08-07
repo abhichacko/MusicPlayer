@@ -370,6 +370,10 @@
     display: -ms-flexbox;
     display: flex;
   }
+  .volume-slider {
+    left: 64vh;
+    top: 37vh;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -422,7 +426,6 @@
   .volume-slider {
     left: 10vh;
     top: 37vh;
-    background-color: black;
   }
 }
 /*# sourceMappingURL=musicplayer.css.map */
