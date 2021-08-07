@@ -122,7 +122,10 @@ const app = () => {
         (100 * audio.currentTime) / audio.duration
       )}% `;
     };
-
+    progressContainer.addEventListener("click", (event) => {
+      audio.currentTime =
+        (event.offsetX / progressContainer.offsetWidth) * audio.duration;
+    });
     progressContainer.addEventListener("mousedown", () => {
       isMouseDown = true;
     });
@@ -169,10 +172,7 @@ const app = () => {
     progressContainer.addEventListener("mouseleave", () => {
       isMouseDown = false;
     });
-    progressContainer.addEventListener("click", (event) => {
-      audio.currentTime =
-        (event.offsetX / progressContainer.offsetWidth) * audio.duration;
-    });
+
     playListButton.addEventListener("click", () => {
       mobilePlayListArea.classList.toggle("show-mobile-playlist-area");
       songImage.classList.toggle("show-image");
