@@ -287,8 +287,13 @@ const app = () => {
       });
       mobilePlayListLi[index].classList.add("active-music");
       mobilePlayListLi[index].focus();
-      let activeLi = document.getElementById(`li-${index}`);
-      activeLi.scrollIntoView();
+      playListLi[index].focus();
+      if (index === 0) {
+        let activeLi = document.getElementById(`li-${index}`);
+        activeLi.scrollIntoView();
+        activeLi = document.getElementById(`mobile-li-${index}`);
+        activeLi.scrollIntoView();
+      }
     };
 
     const playByIndex = (songIndex) => {
@@ -313,7 +318,7 @@ const app = () => {
         let li = document.createElement("li");
         li.innerHTML = song.songPath.slice(8);
         li.setAttribute("value", songList.indexOf(song));
-
+        li.setAttribute("id", `li-${songList.indexOf(song)}`);
         playListUl.appendChild(li);
       }
       playListLi = document.querySelectorAll("#playlist-ul li");
@@ -340,7 +345,7 @@ const app = () => {
         let li = document.createElement("li");
         li.innerHTML = song.songPath.slice(8);
         li.setAttribute("value", songList.indexOf(song));
-        li.setAttribute("id", `li-${songList.indexOf(song)}`);
+        li.setAttribute("id", `mobile-li-${songList.indexOf(song)}`);
 
         mobilePlayListUl.appendChild(li);
       }
