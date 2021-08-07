@@ -189,7 +189,7 @@ const app = () => {
 
     volumeButton.addEventListener("click", () => {
       volumeContainer.classList.toggle("show");
-      setTimeout(closeVolumeBar, 5000);
+      // setTimeout(closeVolumeBar, 5000);
     });
 
     volumeBar.addEventListener("focusout", () => {
