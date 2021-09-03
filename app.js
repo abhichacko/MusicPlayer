@@ -116,7 +116,6 @@ const app = () => {
       }
     };
     audio.ontimeupdate = () => {
-      // console.log((100 * audio.currentTime) / audio.duration);
       let progress = document.getElementById("progress");
       progress.style.width = `${Math.floor(
         (100 * audio.currentTime) / audio.duration
@@ -135,7 +134,6 @@ const app = () => {
     progressContainer.addEventListener(
       "mousemove",
       (event) => {
-        console.log("mouse move");
         if (isMouseDown) {
           audio.currentTime =
             (event.offsetX / progressContainer.offsetWidth) * audio.duration;
@@ -145,7 +143,7 @@ const app = () => {
     );
     progressContainer.addEventListener("touchstart", (event) => {
       isTouchDown = true;
-      console.log("touch start");
+
       if (isTouchDown) {
         let bcr = event.target.getBoundingClientRect();
         let offsetX = event.targetTouches[0].pageX - bcr.left;
@@ -155,19 +153,16 @@ const app = () => {
     });
     progressContainer.addEventListener("touchend", () => {
       isTouchDown = false;
-      console.log("touch end");
     });
 
     //for mobile touch and drag
     progressContainer.addEventListener("touchmove", (event) => {
-      console.log("touch move");
       if (isTouchDown) {
         let bcr = event.target.getBoundingClientRect();
         let offsetX = event.targetTouches[0].pageX - bcr.left;
         audio.currentTime =
           (offsetX / progressContainer.offsetWidth) * audio.duration;
       }
-      console.log(progressContainer.offsetWidth);
     });
     progressContainer.addEventListener("mouseleave", () => {
       isMouseDown = false;
