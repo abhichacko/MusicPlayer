@@ -9,6 +9,23 @@ Responsive music player which supports both desktop and mobile view using HTML, 
 - HTML
 - CSS
 - Vanilla JavaScript
+- Docker
+
+## Instructions
+
+1. Generate the docker image for the project.
+
+   ```bash
+   docker build -t music-player:1.0.0 `pwd`
+   ```
+
+2. After successfully generating the image. Create docker instance for the image.
+
+   ```bash
+   docker run -d -p 80:80 music-player:1.0.0
+   ```
+
+3. Visit localhost/ for enjoying the music player!
 
 ## Functionalities Included
 
