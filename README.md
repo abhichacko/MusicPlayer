@@ -38,7 +38,7 @@ Responsive music player which supports both desktop and mobile view using HTML, 
 
 ## File Structure
 
-```
+```file_structure
 MusicPlayer
  ┣ images
  ┃ ┣ icons
